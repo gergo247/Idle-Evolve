@@ -15,9 +15,6 @@ public class GameManager : MonoBehaviour
     {
         if (theInstance == null)
             theInstance = this;
-
-      
-
     }
 
    

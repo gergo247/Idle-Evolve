@@ -12,13 +12,13 @@ public class CanvasScript : MonoBehaviour
     public double dna;
 
     [SerializeField]
-    GameObject shop;
-    ShopScript shopScript;
+    GameObject singleLifeGO;
+    SingleLifeScript singleLifeScript;
 
     void Start()
     {
-        shopScript = shop.GetComponent<ShopScript>();
-        if (shopScript != null)
+        singleLifeScript = singleLifeGO.GetComponent<SingleLifeScript>();
+        if (singleLifeScript != null)
             Debug.Log("megy");
 
         dna = 30;
@@ -38,14 +38,14 @@ public class CanvasScript : MonoBehaviour
 
     private void RefreshUI()
     {
-        if (shopScript != null)
-            shopScript.SetEntityValues();
+        if (singleLifeScript != null)
+            singleLifeScript.SetEntityValues();
     }
 
     private void CalculateMoney()
     {
-        if (shopScript != null)
-            dna += shopScript.singleLifeNumber * shopScript.singleLifeEff * Time.deltaTime;
+        if (singleLifeScript != null)
+            dna += singleLifeScript.singleLifeNumber * singleLifeScript.singleLifeEff * (singleLifeScript.nucleusNumber * 1.05)  * Time.deltaTime;
 
 
         SetMoneyText();
