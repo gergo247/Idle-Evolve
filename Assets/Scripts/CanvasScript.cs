@@ -6,14 +6,33 @@ using UnityEngine.UI;
 
 public class CanvasScript : MonoBehaviour
 {
+    #region singleLife
     [SerializeField]
     private Text Dna;
-
     public double dna;
 
     [SerializeField]
     GameObject singleLifeGO;
     SingleLifeScript singleLifeScript;
+    #endregion singleLife
+    #region multicellLife
+    [SerializeField]
+    private Text Energy;
+    public double energy;
+
+    [SerializeField]
+    GameObject multiCellLifeGO;
+    SingleLifeScript multiCellLifeScript;
+
+    public void AddEnergy(double energyToAdd)
+    {
+        energy += energyToAdd;
+    }
+
+
+    #endregion multicellLife
+
+
 
     void Start()
     {
