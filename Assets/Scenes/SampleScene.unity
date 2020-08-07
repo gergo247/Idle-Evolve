@@ -391,8 +391,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 953107568}
-        m_MethodName: BuySingleLife
+      - m_Target: {fileID: 539835539}
+        m_MethodName: BuyPhotoCell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1095,12 +1095,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8ffc4a58884bf4a90b87c817e25902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  PhotoCellNumberText: {fileID: 0}
-  BuyPhotoCellButton: {fileID: 0}
-  PhotoCellNumber: 0
-  CarnivoreNumberText: {fileID: 0}
-  BuyCarnivoreButton: {fileID: 0}
+  canvas: {fileID: 688232010}
+  PhotoCellNumberText: {fileID: 1076273369}
+  BuyPhotoCellButton: {fileID: 62886858}
+  photoCellNumber: 0
+  photoEff: 1
+  CarnivoreNumberText: {fileID: 43204249}
+  BuyCarnivoreButton: {fileID: 1443098248}
   carnivoreNumber: 0
   carnivoreSpeed: 600
 --- !u!1 &582403243
@@ -1318,9 +1319,9 @@ MonoBehaviour:
   Dna: {fileID: 235952897}
   dna: 1
   singleLifeGO: {fileID: 953107566}
-  Energy: {fileID: 0}
+  Energy: {fileID: 173270780}
   energy: 0
-  multiCellLifeGO: {fileID: 0}
+  multiCellLifeGO: {fileID: 539835537}
 --- !u!114 &688232012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2227,8 +2228,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 953107568}
-        m_MethodName: BuyNucleus
+      - m_Target: {fileID: 539835539}
+        m_MethodName: BuyCarnivore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
