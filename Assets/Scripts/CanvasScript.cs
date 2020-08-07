@@ -14,6 +14,23 @@ public class CanvasScript : MonoBehaviour
     [SerializeField]
     GameObject singleLifeGO;
     SingleLifeScript singleLifeScript;
+
+    
+
+    private void CalculateDna()
+    {
+        if (singleLifeScript != null)
+        {
+            dna += singleLifeScript.singleLifeNumber * singleLifeScript.singleLifeEff * (singleLifeScript.nucleusNumber * 1.05) * Time.deltaTime;
+        }
+
+        SetDnaText();
+    }
+    public void SetDnaText()
+    {
+        Dna.text = "Dna : " + dna.ToString("f0");
+    }
+
     #endregion singleLife
     #region multicellLife
     [SerializeField]
@@ -22,13 +39,28 @@ public class CanvasScript : MonoBehaviour
 
     [SerializeField]
     GameObject multiCellLifeGO;
-    SingleLifeScript multiCellLifeScript;
+    MultiCellurarLifeStageScript multiCellLifeScript;
 
     public void AddEnergy(double energyToAdd)
     {
         energy += energyToAdd;
     }
 
+    private void CalculateEnergy()
+    {
+        if (multiCellLifeScript != null)
+        {
+            energy += multiCellLifeScript.photoCellNumber * multiCellLifeScript.photoEff * Time.deltaTime;
+            //Debug.Log("energy : " + energy);
+        }
+
+        SetEnergyText();
+    }
+
+    public void SetEnergyText()
+    {
+        Energy.text = "E : " + energy.ToString("f0");
+    }
 
     #endregion multicellLife
 
@@ -37,21 +69,17 @@ public class CanvasScript : MonoBehaviour
     void Start()
     {
         singleLifeScript = singleLifeGO.GetComponent<SingleLifeScript>();
-        if (singleLifeScript != null)
-            Debug.Log("megy");
+        multiCellLifeScript = multiCellLifeGO.GetComponent<MultiCellurarLifeStageScript>();
 
         dna = 30;
+        energy = 100;
 
-    }
-
-    public void SetMoneyText()
-    {
-        Dna.text = "Dna : " + dna.ToString("f0");
     }
 
     void Update()
     {
-        CalculateMoney();
+        CalculateDna();
+        CalculateEnergy();
         RefreshUI();
     }
 
@@ -59,14 +87,9 @@ public class CanvasScript : MonoBehaviour
     {
         if (singleLifeScript != null)
             singleLifeScript.SetEntityValues();
+        if (multiCellLifeScript != null)
+            multiCellLifeScript.SetEntityValues();
     }
 
-    private void CalculateMoney()
-    {
-        if (singleLifeScript != null)
-            dna += singleLifeScript.singleLifeNumber * singleLifeScript.singleLifeEff * (singleLifeScript.nucleusNumber * 1.05)  * Time.deltaTime;
-
-
-        SetMoneyText();
-    }
+   
 }

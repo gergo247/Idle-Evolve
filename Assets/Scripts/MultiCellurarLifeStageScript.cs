@@ -19,15 +19,17 @@ public class MultiCellurarLifeStageScript : MonoBehaviour
     [SerializeField]
     private Button BuyPhotoCellButton;
 
-    public int PhotoCellNumber;
+    public int photoCellNumber = 1;
+    public float photoEff = 1;
+
     int _photoCellCost;
-    public double photoCellCost { get { return 10 + ((PhotoCellNumber * PhotoCellNumber * 0.44) * 2.1); } }
+    public double photoCellCost { get { return 10 + ((photoCellNumber * photoCellNumber * 0.44) * 2.1); } }
     public void BuyPhotoCell()
     {
         if (canvasScript.energy >= photoCellCost)
         {
             canvasScript.energy -= photoCellCost;
-            PhotoCellNumber++;
+            photoCellNumber++;
         }
     }
     #endregion photosynthesis
@@ -40,8 +42,8 @@ public class MultiCellurarLifeStageScript : MonoBehaviour
     public int carnivoreNumber;
     int _carnivoreCost;
     public double carnivoreCost { get { return 150 + (carnivoreNumber * carnivoreNumber * 1.1); } }
-
     public float carnivoreSpeed = 600;
+
     public void BuyCarnivore()
     {
         if (canvasScript.energy >= carnivoreCost)
@@ -51,8 +53,9 @@ public class MultiCellurarLifeStageScript : MonoBehaviour
         }
     }
 
-    public void CarnivoreFoundFood()
+    void CarnivoreFoundFood()
     {
+        Debug.Log("food found");
         canvasScript.AddEnergy(1000 * (carnivoreNumber * 1.03));
     }
 
@@ -61,11 +64,22 @@ public class MultiCellurarLifeStageScript : MonoBehaviour
 
     void Start()
     {
+        canvasScript = canvas.GetComponent<CanvasScript>();
+        carnivoreSpeed = 600;
         //every 10 mins in beggining
         InvokeRepeating("CarnivoreFoundFood", carnivoreSpeed, carnivoreSpeed);
+
+        photoEff = 1;
+        photoCellNumber = 1;
     }
 
     void Update()
     {
+    }
+
+    public void SetEntityValues()
+    {
+        PhotoCellNumberText.text = string.Format("{0} ({1:0})", photoCellNumber, photoCellCost);
+        CarnivoreNumberText.text = string.Format("{0} ({1:0})", carnivoreNumber, carnivoreCost);
     }
 }
