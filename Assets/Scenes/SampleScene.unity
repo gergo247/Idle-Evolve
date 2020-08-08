@@ -3133,15 +3133,37 @@ MonoBehaviour:
   IronText: {fileID: 0}
   EnergyText: {fileID: 0}
   population: 0
+  timeUntilBirth: 0
   wood: 0
   stone: 0
   food: 0
   knowledge: 0
   iron: 0
-  evergy: 0
+  energy: 0
   HouseNumberText: {fileID: 660208882}
   BuildHouseButton: {fileID: 258141540}
   houseNumber: 0
+  WoodCutterNumberText: {fileID: 0}
+  BuildWoodCutterButton: {fileID: 0}
+  woodCutterNumber: 0
+  StoneMineNumberText: {fileID: 0}
+  BuildStoneMineButton: {fileID: 0}
+  stoneMineNumber: 0
+  FarmNumberText: {fileID: 0}
+  BuildFarmButton: {fileID: 0}
+  farmNumber: 0
+  LibraryText: {fileID: 0}
+  BuildLibraryButton: {fileID: 0}
+  libraryNumber: 0
+  IronWorksText: {fileID: 0}
+  BuildIronWorksButton: {fileID: 0}
+  ironWorksNumber: 0
+  ThermanPowerPlantText: {fileID: 0}
+  BuildThermanPowerPlantButton: {fileID: 0}
+  thermanPowerPlantNumber: 0
+  FactoryText: {fileID: 0}
+  BuildFactoryButton: {fileID: 0}
+  factoryNumber: 0
 --- !u!1 &1333301512
 GameObject:
   m_ObjectHideFlags: 0
