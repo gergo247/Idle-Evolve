@@ -56,10 +56,10 @@ public class MultiCellurarLifeStageScript : MonoBehaviour
     void CarnivoreFoundFood()
     {
         Debug.Log("food found");
-        canvasScript.AddEnergy(1000 * (carnivoreNumber * 1.03));
+        canvasScript.AddEnergy(1000 * (carnivoreNumber * 1.03) * Random.Range(0.95f,1.1f));
     }
 
-    #endregion nucleus
+    #endregion carnivore
 
 
     void Start()
