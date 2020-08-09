@@ -253,18 +253,64 @@ public class IntelligentLifeStageScript : MonoBehaviour
             factoryNumber++;
         }
     }
-     void SetBuildingButtonVisibility()
+
+    [SerializeField]
+    private Text NuclearPowerPlantText;
+    [SerializeField]
+    private Button BuildNuclearPowerPlantButton;
+    public bool nuclearPowerPlantButtonVisible { get { return population > techPopLimit2; } }
+
+
+
+    public int nuclearPowerPlantNumber;
+    int _nuclearPowerPlantCost;
+    public double nuclearPowerPlantWoodCost { get { return 10 + (nuclearPowerPlantNumber * nuclearPowerPlantNumber * 0.33); } }
+    public double nuclearPowerPlantStoneCost { get { return 10 + (nuclearPowerPlantNumber * nuclearPowerPlantNumber * 0.33); } }
+
+    public void BuyNuclearPowerPlant()
     {
+        if (wood >= nuclearPowerPlantWoodCost && stone > nuclearPowerPlantStoneCost)
+        {
+            wood -= nuclearPowerPlantWoodCost;
+            stone -= nuclearPowerPlantStoneCost;
+
+            nuclearPowerPlantNumber++;
+        }
+    }
+
+    [SerializeField]
+    private Text SpaceStationText;
+    [SerializeField]
+    private Button BuildSpaceStationButton;
+    public bool spaceStationButtonVisible { get { return population > techPopLimit2; } }
 
 
 
+    public int spaceStationNumber;
+    int _spaceStationCost;
+    public double spaceStationWoodCost { get { return 10 + (spaceStationNumber * spaceStationNumber * 0.33); } }
+    public double spaceStationStoneCost { get { return 10 + (spaceStationNumber * spaceStationNumber * 0.33); } }
+
+    public void BuySpaceStation()
+    {
+        if (wood >= spaceStationWoodCost && stone > spaceStationStoneCost)
+        {
+            wood -= spaceStationWoodCost;
+            stone -= spaceStationStoneCost;
+
+            spaceStationNumber++;
+        }
+    }
+    void SetBuildingButtonVisibility()
+    {
         BuildWoodCutterButton.gameObject.SetActive(woodCutterButtonVisible);
-        BuildStoneMineButton.gameObject.SetActive(woodCutterButtonVisible);
-        BuildFarmButton.gameObject.SetActive(woodCutterButtonVisible);
-        BuildLibraryButton.gameObject.SetActive(woodCutterButtonVisible);
-        BuildThermanPowerPlantButton.gameObject.SetActive(woodCutterButtonVisible);
-        BuildFactoryButton.gameObject.SetActive(woodCutterButtonVisible);
-
+        BuildStoneMineButton.gameObject.SetActive(stoneMineButtonVisible);
+        BuildFarmButton.gameObject.SetActive(farmButtonVisible);
+        BuildLibraryButton.gameObject.SetActive(libraryButtonVisible);
+        BuildThermanPowerPlantButton.gameObject.SetActive(thermanPowerPlantButtonVisible);
+        BuildFactoryButton.gameObject.SetActive(factoryButtonVisible);
+        BuildNuclearPowerPlantButton.gameObject.SetActive(nuclearPowerPlantButtonVisible);
+        BuildSpaceStationButton.gameObject.SetActive(spaceStationButtonVisible);
     }
 
     #endregion buildings
